@@ -1,0 +1,68 @@
+:: StoryTitle
+BGJ2024
+
+
+:: StoryData
+{
+  "ifid": "B0E15C08-1901-4935-9965-5B3728AB59DC",
+  "format": "SugarCube",
+  "format-version": "2.36.1",
+  "start": "Introduction",
+  "zoom": 1
+}
+
+
+:: Base {"position":"575,625","size":"100,100"}
+<<include "util_game">>\
+TODO: flavor text, game options
+
+This is your base, it's a pretty bad squat or something
+
+[[Execute heist]]
+
+
+:: Execute heist {"position":"575,750","size":"100,100"}
+<<include "util_game">>\
+TODO: heist clock, start counting down here
+TODO: setup heist?
+
+TODO: get caught
+TODO: put clock
+
+TODO: include a flavor text when we enter a room?
+
+TODO: possible actions:
+- set trap (how does this work? does it give more time?)
+- search room (can give more room exits or can give loot)
+- go to another room (repeats this menu with different flavor text)
+
+
+:: Introduction {"position":"575,350","size":"100,100"}
+Welcome to BGJ2024 (work in progress title)
+
+TODO: Add more stuff here, such as authorship
+
+[[Start new game]]
+
+
+:: Start new game {"position":"575,500","size":"100,100"}
+<<include "util_game">>\
+TODO: this is character creation and should populate starting game variables
+
+Enter your crime name:
+
+<<textbox "$playerName" "Rude Jude">>
+
+Enter your pronouns:
+
+TODO
+
+[[Visit your base|Base]]
+
+
+:: util_game {"position":"125,125","size":"100,100"}
+<<silently>>
+<<if ndef $playerName>>
+	<<set $playerName to "Smary Gary">>
+<</if>>
+<</silently>>
