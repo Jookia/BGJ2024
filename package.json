@@ -1,0 +1,27 @@
+{
+  "name": "bgj2024",
+  "version": "1.0.0",
+  "description": "Blind Game Jam 2024 game",
+  "private": true,
+  "scripts": {
+    "check": "npx prettier -w src && npx clean-html public/index.html --in-place",
+    "dev": "npx esbuild src/index.js src/index.css --bundle --outdir=public/ --servedir=public/ --serve=127.0.0.1:8080",
+    "build": "npx esbuild src/index.js src/index.css --bundle --outdir=public/",
+    "clean": "rm public/index.js public/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jookia/BGJ2024.git"
+  },
+  "author": "Jookia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jookia/BGJ2024/issues"
+  },
+  "homepage": "https://github.com/Jookia/BGJ2024#readme",
+  "devDependencies": {
+    "clean-html": "^2.0.1",
+    "esbuild": "^0.20.0",
+    "prettier": "^3.2.4"
+  }
+}
