@@ -41,10 +41,10 @@ function outputClear() {
 function outputText(text) {
   const output = document.querySelector("#game-output");
   const node = document.createTextNode(text);
-  const para = document.createElement("p");
-  para.appendChild(node);
-  output.appendChild(para);
-  para.focus();
+  const paragraph = document.createElement("p");
+  paragraph.appendChild(node);
+  output.appendChild(paragraph);
+  paragraph.focus();
 }
 
 // Adds a list of choices to the game output
@@ -69,9 +69,9 @@ function outputChoices(choices) {
     ol.appendChild(li);
   });
 
-  const para = document.createElement("p");
-  para.appendChild(ol);
-  output.appendChild(para);
+  const paragraph = document.createElement("p");
+  paragraph.appendChild(ol);
+  output.appendChild(paragraph);
 }
 
 // GUI CODE END
