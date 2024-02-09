@@ -20,7 +20,7 @@ function outputBusy(isBusy) {
   output.ariaBusy = isBusy;
 }
 
-// Sets aria-live: Use this once on the first contents change
+// Sets aria-live: Use this at least once on the first contents change
 function outputLive() {
   const output = document.querySelector("#game-output");
   output.setAttribute("aria-live", "polite");
