@@ -12,7 +12,7 @@
 // Narrator+Anything: role=log doesn't speak (tested 2024-02-07)
 // Misc Notes:
 // - aria-atomic="true" causes duplicate reads in Orca+Firefox
-// - aria-polite on by default causes duplicate reads on page load
+// - aria-live on by default causes duplicate reads on page load
 
 import parse from "./helpers/parseText";
 import text from "./text.json";
