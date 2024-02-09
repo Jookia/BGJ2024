@@ -14,6 +14,9 @@
 // - aria-atomic="true" causes duplicate reads in Orca+Firefox
 // - aria-polite on by default causes duplicate reads on page load
 
+import parse from "./helpers/parseText";
+import text from "./text.json";
+
 // Sets aria-busy: Use this whenever you're changing game contents
 function outputBusy(isBusy) {
   const output = document.querySelector("#game-output");
@@ -77,12 +80,15 @@ function outputChoices(choices) {
 
 var thingCount = 1;
 
+const user = { name: "Peter", pronouns: "they/them" };
+
 function handleChoiceClick(event) {
   outputBusy(true);
   outputLive();
   outputClear();
   outputText("You clicked something! Good job");
   outputText("Want a cookie?");
+  outputText(parse(text.intro, user));
   outputChoices([
     ["Do thing " + thingCount, "thing1"],
     ["Do thing " + (thingCount + 1), "thing2"],
