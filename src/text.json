@@ -1,0 +1,3 @@
+{
+  "intro": "Hello there ${name}, your pronouns are ${pronouns}."
+}
