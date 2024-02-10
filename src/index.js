@@ -26,7 +26,7 @@ function outputBusy(isBusy) {
 // Sets aria-live: Use this at least once on the first contents change
 function outputLive() {
   const output = document.querySelector("#game-output");
-  output.setAttribute("aria-live", "polite");
+  output.ariaLive = "polite";
 }
 
 // Clears the game output
@@ -52,25 +52,20 @@ function outputText(text) {
 // Example: outputChoices([["Hello world", "hello"], ["Goodnight world", "bye"]])
 function outputChoices(choices) {
   const output = document.querySelector("#game-output");
-  const ol = document.createElement("ol");
+  const paragraph = document.createElement("p");
 
   choices.forEach((choice) => {
     const choiceName = choice[0];
     const choiceId = choice[1];
 
     const title = document.createTextNode(choiceName);
-    const a = document.createElement("a");
-    a.setAttribute("href", "#");
-    a.addEventListener("click", handleChoiceClick);
-    a.appendChild(title);
-
-    const li = document.createElement("li");
-    li.appendChild(a);
-    ol.appendChild(li);
+    const button = document.createElement("button");
+    button.dataset.choiceId = choiceId;
+    button.addEventListener("click", handleChoiceClick);
+    button.appendChild(title);
+    paragraph.appendChild(button);
   });
 
-  const paragraph = document.createElement("p");
-  paragraph.appendChild(ol);
   output.appendChild(paragraph);
 }
 
@@ -78,35 +73,82 @@ function outputChoices(choices) {
 
 // GAME CODE BEGIN
 
-var thingCount = 1;
+const locations = {
+  supermart_outside: {
+    description: "You are outside a supermarket. It is garbage.",
+    interactables: {
+      choice1: {
+        text: "Go inside the Supermart",
+        successChance: 1,
+        successText: "You enter the supermart swiftly.",
+        successTeleport: "supermart_inside",
+      },
+      nothing: {
+        text: "Do nothing",
+        successChance: 1,
+        successText: "You do nothing. Succesfully.",
+        successTeleport: "",
+      },
+    },
+  },
+  supermart_inside: {
+    description: "You are inside the supermarket. It is cool.",
+    interactables: {
+      outside: {
+        text: "Go outside",
+        successChance: 1,
+        successText: "You exit the supermart",
+        successTeleport: "supermart_outside",
+      },
+      nothing: {
+        text: "Do nothing again",
+        successChance: 1,
+        successText: "You do nothing again. Succesfully.",
+        successTeleport: "",
+      },
+    },
+  },
+};
 
-const user = { name: "Peter", pronouns: "they/them" };
+let user = {
+  name: "Peter",
+  pronouns: "they/them",
+  location: "supermart_outside",
+};
+
+function doChoice(choiceId) {
+  const choice = locations[user.location].interactables[choiceId];
+  outputText(choice.successText);
+  if (choice.successTeleport !== "") {
+    user.location = choice.successTeleport;
+  }
+}
+
+function showLocation() {
+  const location = locations[user.location];
+  outputText(location.description);
+  let choices = [];
+  Object.entries(location.interactables).forEach(([key, value]) => {
+    choices.push([value.text, key]);
+  });
+  outputChoices(choices);
+}
 
 function handleChoiceClick(event) {
+  const choiceId = event.target.dataset.choiceId;
   outputBusy(true);
   outputLive();
   outputClear();
-  outputText("You clicked something! Good job");
-  outputText("Want a cookie?");
-  outputText(parse(text.intro, user));
-  outputChoices([
-    ["Do thing " + thingCount, "thing1"],
-    ["Do thing " + (thingCount + 1), "thing2"],
-  ]);
-  thingCount += 2;
+  doChoice(choiceId);
+  showLocation();
   outputBusy(false);
 }
 
 addEventListener("load", (event) => {
   outputBusy(true);
+  outputLive();
   outputClear();
-  outputText("Hello 1");
-  outputText("Hello 2");
-  outputChoices([
-    ["Do thing 1", "thing1"],
-    ["Do thing 2", "thing2"],
-  ]);
-  thingCount = 3;
+  showLocation();
   outputBusy(false);
 });
 
