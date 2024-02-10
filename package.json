@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "check": "npx prettier -w src && npx clean-html public/index.html --in-place",
-    "dev": "npx esbuild src/index.js src/index.css --bundle --outdir=public/ --servedir=public/ --serve=127.0.0.1:8080",
+    "dev": "npx esbuild src/index.js src/index.css --sourcemap=inline --bundle --outdir=public/ --servedir=public/ --serve=127.0.0.1:8080",
     "build": "npx esbuild src/index.js src/index.css --bundle --outdir=public/",
     "clean": "rm public/index.js public/index.css"
   },
