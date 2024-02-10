@@ -2,4 +2,8 @@ node_modules
 package-lock.json
 public/
 !public/index.html
+!public/favicon.ico
+!public/sounds/*.mp3
+!public/sounds/*.wav
+!public/sounds/*.ogg
 .next/

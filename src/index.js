@@ -1,3 +1,8 @@
+/**
+ * @deprecated
+ * Keeping this file for now, for reference regarding ARIA.
+ */
+
 // License: MIT
 
 // GUI CODE BEGIN
@@ -13,9 +18,6 @@
 // Misc Notes:
 // - aria-atomic="true" causes duplicate reads in Orca+Firefox
 // - aria-live on by default causes duplicate reads on page load
-
-import parse from "./helpers/parseText";
-import text from "./text.json";
 
 // Sets aria-busy: Use this whenever you're changing game contents
 function outputBusy(isBusy) {
