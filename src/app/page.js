@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <>
-      <h1 aria-hidden className="text-3xl font-bold underline">
+      <h1 className="text-3xl font-bold underline">
         BGJ2024
       </h1>
       <GameOutput

@@ -10,9 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body
-        // aria-busy
-        aria-atomic
-        aria-live="polite"
         className={clsx(
           "p-10 w-full text-center",
           "dark:bg-black dark:text-slate-200"
