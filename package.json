@@ -5,16 +5,23 @@
   "private": true,
   "scripts": {
     "check": "npx prettier -w src && npx clean-html public/index.html --in-place",
-    "dev": "npx next dev -p 4000",
-    "build": "npx esbuild src/index.js src/index.css --bundle --outdir=public/",
+    "dev": "npx tailwindcss -i ./src/app/globals.css -o ./public/style.css && npx esbuild src/app/index.js --loader:.js=jsx --sourcemap=inline --bundle --outdir=public/ --servedir=public/ --serve=127.0.0.1:4000",
     "clean": "rm public/index.js public/index.css"
   },
+  "keywords": [
+    "blind",
+    "accessible",
+    "accessibility",
+    "game jam",
+    "video game",
+    "game"
+  ],
+  "author": "Jookia",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jookia/BGJ2024.git"
   },
-  "author": "Jookia",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jookia/BGJ2024/issues"
   },
@@ -28,9 +35,6 @@
     "tailwindcss": "^3.4.1"
   },
   "dependencies": {
-    "clsx": "^2.1.0",
-    "next": "^14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "clsx": "^2.1.0"
   }
 }

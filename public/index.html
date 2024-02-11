@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Test file</title>
-    <link rel="stylesheet" href="./index.css">
+    <meta charset="utf-8" />
+    <title>BGJ2024</title>
+    <link href="./style.css" rel="stylesheet" />
     <script src="./index.js"></script>
   </head>
-  <body>
+  <body class="p-10 w-full text-center dark:bg-black dark:text-slate-200">
     <header>
-      <h1 class="title">BGJ2024</h1>
+      <h1 class="title text-3xl font-bold underline">BGJ2024</h1>
     </header>
-    <main id="game-output" role="log" aria-busy="true" aria-live="off" aria-atomic="false"></main>
+    <main
+      id="game-output"
+      role="log"
+      aria-busy="true"
+      aria-live="off"
+      aria-atomic="false"
+      class="p-8 flex flex-col items-center"
+    >
+      <p id="location-description" class="mb-4 text-lg"></p>
+      <div id="buttons" class="flex flex-col w-8/12"></div>
+    </main>
   </body>
 </html>
