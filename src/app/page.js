@@ -13,9 +13,7 @@ export default function Page() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        BGJ2024
-      </h1>
+      <h1 className="text-3xl font-bold underline">BGJ2024</h1>
       <GameOutput
         player={player}
         setPlayer={setPlayer}

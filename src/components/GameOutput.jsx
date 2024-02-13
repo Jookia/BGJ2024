@@ -29,7 +29,14 @@ export default function GameOutput({
     f("#game-output").ariaBusy = false;
   }
   return (
-    <div id="game-output" className="p-8 flex flex-col items-center" role="log" aria-atomic="false" aria-busy="true" aria-live="off">
+    <div
+      id="game-output"
+      className="p-8 flex flex-col items-center"
+      role="log"
+      aria-atomic="false"
+      aria-busy="true"
+      aria-live="off"
+    >
       <p
         ref={descriptionRef}
         id="location-description"
