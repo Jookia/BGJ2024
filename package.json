@@ -6,8 +6,7 @@
   "scripts": {
     "check": "npx prettier -w src && npx clean-html public/index.html --in-place",
     "dev": "npx next dev -p 4000",
-    "build": "npx esbuild src/index.js src/index.css --bundle --outdir=public/",
-    "clean": "rm public/index.js public/index.css"
+    "build": "npx next build"
   },
   "repository": {
     "type": "git",
