@@ -21,17 +21,14 @@ export default function GameOutput({
     } else {
       // TODO implement failure event
     }
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = "#location-description";
     link.click();
   }
 
   return (
     <div id="game-output" className="p-8 flex flex-col items-center">
-      <p
-        id="location-description"
-        className="mb-4 text-lg"
-      >
+      <p id="location-description" className="mb-4 text-lg">
         {actionFeedback ?? p(location.description)}
       </p>
       <div id="buttons" className="flex flex-col w-8/12">
