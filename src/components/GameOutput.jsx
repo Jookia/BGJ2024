@@ -30,31 +30,19 @@ export default function GameOutput({
 
   return (
     <div id="game-output" className="p-8 flex flex-col items-center">
-      <p id="location-description" className="mb-4 text-lg">
-        {actionFeedback ?? p(location.description)}
-      </p>
+      <div id="location-description" className="mb-4 text-lg">
+        {actionFeedback && <p>{actionFeedback}</p>}
+        <p> {p(location.description)}</p>
+      </div>
       <div id="buttons" className="flex flex-col w-8/12">
-        {actionFeedback ? (
-          <>
-            <ActionButton
-              action={{ text: "Continue" }}
-              doAction={() => doAction(null)}
-            />
-          </>
-        ) : (
-          <>
-            {Object.entries(location.interactables).map(
-              ([name, action], index) => (
-                <ActionButton
-                  key={name}
-                  name={name}
-                  action={action}
-                  doAction={doAction}
-                />
-              ),
-            )}
-          </>
-        )}
+        {Object.entries(location.interactables).map(([name, action], index) => (
+          <ActionButton
+            key={name}
+            name={name}
+            action={action}
+            doAction={doAction}
+          />
+        ))}
       </div>
     </div>
   );
