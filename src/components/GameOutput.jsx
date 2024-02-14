@@ -17,7 +17,9 @@ export default function GameOutput({
       setActionFeedback(null);
     } else if (action.successChance >= Math.random()) {
       setActionFeedback(action.successText);
-      setLocation(action.successTeleport);
+      if (action.successTeleport !== "") {
+        setLocation(action.successTeleport);
+      }
     } else {
       // TODO implement failure event
     }
