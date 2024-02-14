@@ -24,15 +24,11 @@ export default function GameOutput({
     } else {
       // TODO implement failure event
     }
-    f("#game-output").focus();
+    f("#game-status").focus();
   }
 
   return (
-    <div
-      id="game-output"
-      className="p-8 flex flex-col items-center focus-visible:outline-none"
-      tabIndex="-1"
-    >
+    <div id="game-output" className="p-8 flex flex-col items-center">
       <GameStatus
         actionFeedback={p(actionFeedback)}
         locationDescription={p(location.description)}
