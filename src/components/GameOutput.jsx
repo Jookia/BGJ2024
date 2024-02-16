@@ -17,7 +17,11 @@ export default function GameOutput({
     if (!action) {
       setActionFeedback(null);
     } else if (action.successChance >= Math.random()) {
-      setActionFeedback(action.successText);
+      let feedback = action.successText;
+      if (feedback !== "" && feedback == actionFeedback) {
+        feedback = feedback + " (Repeat)";
+      }
+      setActionFeedback(feedback);
       if (action.successTeleport !== "") {
         setLocation(action.successTeleport);
       }
