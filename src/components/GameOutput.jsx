@@ -1,17 +1,20 @@
+"use client";
+
 import ActionButton from "./ActionButton";
 import GameStatus from "./GameStatus";
 import parse from "@/helpers/parseText";
 import { useState, useEffect } from "react";
+import { locations } from "@/data/locations";
 
-export default function GameOutput({
-  player,
-  setPlayer,
-  location,
-  setLocation,
-}) {
+export default function GameOutput() {
   const [actionFeedback, setActionFeedback] = useState();
   const p = (text) => parse(text, player);
   const f = (selector) => document.querySelector(selector);
+  const [player, setPlayer] = useState({
+    name: "Peter",
+    pronouns: "they/them",
+  });
+  const [location, setLocation] = useState(locations["intro"]);
 
   function doAction(action) {
     if (!action) {
@@ -23,7 +26,7 @@ export default function GameOutput({
       }
       setActionFeedback(feedback);
       if (action.successTeleport !== "") {
-        setLocation(action.successTeleport);
+        setLocation(locations[action.successTeleport]);
       }
     } else {
       // TODO implement failure event
