@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export default function ActionButton({ name, action, doAction }) {
+export default function ActionButton({ text, onClick }) {
   return (
     <button
       className={clsx(
@@ -9,9 +9,9 @@ export default function ActionButton({ name, action, doAction }) {
         "box-border border-2 block w-full m-2 p-4",
         "focus:border-red-600",
       )}
-      onClick={(_) => doAction(action)}
+      onClick={onClick}
     >
-      {action.text}
+      {text}
     </button>
   );
 }
