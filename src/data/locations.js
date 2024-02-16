@@ -1,24 +1,43 @@
 export const locations = {
   intro: {
-    description: "Hello there ${name}, your pronouns are ${pronouns}.",
+    description:
+      "Hello ${name}, welcome to BGJ2024! This game is about heisting resources to aid your local community and escape poverty. You will face many challenges and commit many crimes. When you're ready, head to your base and start your mischief. Are you ready?",
     interactables: {
-      choice1: {
-        text: "Walk towards the Supermart",
+      base: {
+        text: "Yes, take me to my base!",
         successChance: 1,
-        successText: "You approach the supermart hesitantly.",
+        successText:
+          "You arrive at your base. It's nothing incredible, but it will have to do for now.",
+        successTeleport: "base",
+      },
+      coward: {
+        text: "No, I'm a little scared...",
+        successChance: 1,
+        successText:
+          "That's okay, we all can be sometimes. Take a deep breather, relax and start back at the beginning.",
+        successTeleport: "",
+      },
+    },
+  },
+  base: {
+    description: "Your base is built around an abandoned warehouse.",
+    interactables: {
+      return: {
+        text: "Go to the supermart",
+        successChance: 1,
+        successText: "",
         successTeleport: "supermart_outside",
       },
     },
   },
   lost: {
-    description:
-      "You're in a place. Nobody really knows where. Let's go back to the intro?",
+    description: "You're lost, probably due to a developer oversight.",
     interactables: {
       return: {
-        text: "Take me back",
+        text: "Go back to your base",
         successChance: 1,
-        successText: "Taking you back to the intro...",
-        successTeleport: "intro",
+        successText: "",
+        successTeleport: "base",
       },
     },
   },
@@ -28,14 +47,20 @@ export const locations = {
       choice1: {
         text: "Go inside the Supermart",
         successChance: 1,
-        successText: "You enter the supermart swiftly.",
+        successText: "",
         successTeleport: "supermart_inside",
       },
       nothing: {
         text: "Do nothing",
         successChance: 1,
-        successText: "You do nothing. Succesfully.",
+        successText: "You do nothing again. Succesfully.",
         successTeleport: "",
+      },
+      nothing: {
+        text: "Return to base",
+        successChance: 1,
+        successText: "",
+        successTeleport: "base",
       },
     },
   },
@@ -45,6 +70,7 @@ export const locations = {
       outside: {
         text: "Go outside",
         successChance: 1,
+        successText: "",
         successText: "You exit the supermart",
         successTeleport: "supermart_outside",
       },

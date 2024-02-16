@@ -1,5 +1,6 @@
 import "./globals.css";
 import clsx from "clsx";
+import GameOutput from "@/components/GameOutput";
 
 export const metadata = {
   title: "BGJ2024",
@@ -15,7 +16,8 @@ export default function RootLayout({ children }) {
           "dark:bg-black dark:text-slate-200",
         )}
       >
-        {children}
+        <h1 className="text-3xl font-bold underline">BGJ2024</h1>
+        <GameOutput />
       </body>
     </html>
   );
