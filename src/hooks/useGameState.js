@@ -1,48 +1,44 @@
 "use client";
 
 import parse from "@/helpers/parseText";
+import gameTick from "@/logic/game";
 import { useState, useEffect } from "react";
 import { locations } from "@/data/locations";
+import { defaultPlayer } from "@/data/defaultPlayer";
 
 export default function useGameState() {
-  const [player, setPlayer] = useState({
-    name: "Peter",
-    pronouns: "they/them",
-  });
-  const [location, setLocation] = useState(locations["intro"]);
+  const [player, setPlayer] = useState(defaultPlayer);
   const [actionFeedback, setActionFeedback] = useState();
   const f = (selector) => document.querySelector(selector);
   const p = (text) => parse(text, player);
 
-  function doAction(action) {
-    if (!action) {
-      setActionFeedback(null);
-    } else if (action.successChance >= Math.random()) {
-      let feedback = action.successText;
-      if (feedback !== "" && feedback == actionFeedback) {
-        feedback = feedback + " (Repeat)";
-      }
-      setActionFeedback(p(feedback));
-      if (action.successTeleport !== "") {
-        setLocation(locations[action.successTeleport]);
-      }
-    } else {
-      // TODO implement failure event
+  function doAction(interactable) {
+    let newPlayer = { ...player };
+    let feedback = gameTick(newPlayer, interactable);
+    setPlayer(newPlayer);
+    if (feedback !== "" && feedback == actionFeedback) {
+      feedback = feedback + " (Repeat)";
     }
+    setActionFeedback(p(feedback));
     f("#game-focus").focus();
   }
 
-  let actions = Object.entries(location.interactables).map(
-    ([name, interactable]) => ({
-      name: name,
-      text: interactable.text,
-      run: () => doAction(interactable),
-    }),
-  );
-
   return {
-    locationDescription: p(location.description),
+    locationDescription: p(getLocation(player).description),
     actionFeedback,
-    actions,
+    actions: getActions(player, doAction),
   };
+}
+
+function getLocation(player) {
+  return locations[player.location];
+}
+
+function getActions(player, doAction) {
+  const location = getLocation(player);
+  return Object.entries(location.interactables).map(([name, interactable]) => ({
+    name: name,
+    text: interactable.text,
+    run: () => doAction(interactable),
+  }));
 }
