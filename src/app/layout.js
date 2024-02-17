@@ -9,11 +9,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={clsx(
           "p-10 w-full text-center",
-          "dark:bg-black dark:text-slate-200",
+          "dark:bg-black dark:text-slate-200"
         )}
       >
         <h1 className="text-3xl font-bold underline">BGJ2024</h1>

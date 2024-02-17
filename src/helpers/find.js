@@ -1,3 +1,5 @@
-export default function find(selector) {
-  return document.querySelector(selector);
-}
+// "use client";
+
+// export default function find(selector) {
+//   return document.querySelector(selector);
+// }

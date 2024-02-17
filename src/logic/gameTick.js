@@ -1,9 +1,7 @@
-import parse from "@/helpers/parseText";
 import { locations } from "@/data/locations";
 
 export default function gameTick(action, gameState) {
-  let { player, location, actionFeedback } = gameState;
-  const p = (text) => parse(text, player);
+  let { location, actionFeedback } = gameState;
 
   let feedback = "";
 
@@ -15,7 +13,7 @@ export default function gameTick(action, gameState) {
       const successTeleport = locations[action.successTeleport];
       location = {
         ...successTeleport,
-        description: p(successTeleport.description),
+        description: successTeleport.description,
       };
     }
   }
@@ -25,5 +23,5 @@ export default function gameTick(action, gameState) {
     feedback += " (Repeat)";
   }
 
-  return { actionFeedback: p(feedback), location };
+  return { actionFeedback: feedback, location };
 }
