@@ -1,6 +1,4 @@
-import clsx from "clsx";
-
-export default function GameStatus({ actionFeedback, locationDescription }) {
+export default function StatusText({ actionFeedback, locationDescription }) {
   return (
     <>
       <div
