@@ -1,3 +1,5 @@
+import string from "@/helpers/string";
+
 export default function StatusText({ actionFeedback, locationDescription }) {
   return (
     <>
@@ -7,7 +9,7 @@ export default function StatusText({ actionFeedback, locationDescription }) {
         className="focus-visible:outline-none"
       ></div>
       <p role="status" className="mb-4 text-lg">
-        {actionFeedback ?? locationDescription}
+        {string(actionFeedback) ?? locationDescription}
       </p>
       {actionFeedback && <p className="mb-4 text-lg">{locationDescription}</p>}
     </>
