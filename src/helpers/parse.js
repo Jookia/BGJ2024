@@ -9,7 +9,7 @@ export default function parseObject(objectToParse, lookupTable = {}) {
         default:
           return [key, value];
       }
-    })
+    }),
   );
 }
 
@@ -24,6 +24,6 @@ export function parseString(text, lookupTable = {}) {
 
   return text.replace(
     /\${(\w*)}/g,
-    (match, variable) => lookupTable[variable] ?? match
+    (match, variable) => lookupTable[variable] ?? match,
   );
 }
