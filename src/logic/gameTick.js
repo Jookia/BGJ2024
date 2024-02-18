@@ -1,7 +1,7 @@
 import { locations } from "@/data/locations";
 
 export default function gameTick(action, gameState) {
-  let { location, actionFeedback, clock } = gameState;
+  let { location, actionFeedback, clock, feedbackRepeats } = gameState;
 
   let feedback = "";
 
@@ -21,12 +21,13 @@ export default function gameTick(action, gameState) {
     }
   }
 
-  // TODO remove this
-  if (feedback !== "" && feedback == actionFeedback) {
-    feedback += " (Repeat)";
+  if (feedback === actionFeedback) {
+    feedbackRepeats++;
+  } else {
+    feedbackRepeats = 0;
   }
 
   console.log(`gameState clock: ${gameState.clock}`);
 
-  return { actionFeedback: feedback, location, clock };
+  return { actionFeedback: feedback, location, clock, feedbackRepeats };
 }

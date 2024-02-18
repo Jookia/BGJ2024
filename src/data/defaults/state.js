@@ -7,4 +7,5 @@ export const defaultState = {
   inventory: [],
   actionFeedback: "",
   clock: 0,
+  feedbackRepeats: 0,
 };
