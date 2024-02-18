@@ -3,31 +3,37 @@ import { locations } from "@/data/locations";
 export default function gameTick(action, gameState) {
   let { location, actionFeedback, clock, feedbackRepeats } = gameState;
 
-  let feedback = "";
-
+  // Select commands to use
+  let command = {};
   if (action.successChance < Math.random()) {
-    // TODO implement failure event
+    command = action.onFailure;
   } else {
-    feedback = action.successText;
-    if (action.successTeleport !== "") {
-      const successTeleport = locations[action.successTeleport];
-      location = {
-        ...successTeleport,
-        description: successTeleport.description,
-      };
-    }
-    if (!location.freezeTime && action.successTimeUse) {
-      clock += action.successTimeUse;
-    }
+    command = action.onSuccess;
   }
 
-  if (feedback === actionFeedback) {
+  // Update location
+  let newLocation = location;
+  if (command.teleport != "") {
+    newLocation = locations[command.teleport];
+  }
+  location = {
+    ...newLocation,
+    description: newLocation.description,
+  };
+
+  // Update clock
+  if (!location.freezeTime && command.timeUse) {
+    clock += command.timeUse;
+  }
+  console.log(`gameState clock: ${gameState.clock}`);
+
+  // Update feedback repeats
+  const newFeedback = command.text;
+  if (newFeedback === actionFeedback) {
     feedbackRepeats++;
   } else {
     feedbackRepeats = 0;
   }
 
-  console.log(`gameState clock: ${gameState.clock}`);
-
-  return { actionFeedback: feedback, location, clock, feedbackRepeats };
+  return { actionFeedback: newFeedback, location, clock, feedbackRepeats };
 }
