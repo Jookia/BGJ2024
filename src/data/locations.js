@@ -50,11 +50,16 @@ export const locations = {
       },
       nothing: {
         text: "Do nothing",
-        successChance: 1,
+        successChance: 0.5,
         onSuccess: {
-          text: "You do nothing again. Succesfully.",
+          text: "You do nothing succesfully.",
           teleport: "",
           timeUse: 30,
+        },
+        onFailure: {
+          text: "You try to do nothing but fail!",
+          teleport: "",
+          timeUse: 100,
         },
       },
       return: {
