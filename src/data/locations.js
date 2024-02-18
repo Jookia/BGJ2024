@@ -57,7 +57,7 @@ export const locations = {
           timeUse: 30,
         },
       },
-      nothing: {
+      return: {
         text: "Return to base",
         successChance: 1,
         onSuccess: {
