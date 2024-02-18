@@ -12,14 +12,9 @@ export default function gameTick(action, gameState) {
   }
 
   // Update location
-  let newLocation = location;
   if (command.teleport) {
-    newLocation = locations[command.teleport];
+    location = locations[command.teleport];
   }
-  location = {
-    ...newLocation,
-    description: newLocation.description,
-  };
 
   // Update clock
   if (!location.freezeTime && command.timeUse) {
