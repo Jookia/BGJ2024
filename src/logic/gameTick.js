@@ -3,32 +3,32 @@ import { locations } from "@/data/locations";
 export default function gameTick(action, gameState) {
   let { location, actionFeedback, clock, feedbackRepeats } = gameState;
 
-  // Select commands to use
-  let command = {};
-  if (action.successChance < Math.random()) {
-    command = action.failure;
-  } else {
-    command = action.success;
-  }
+  const isSuccessful = action.successChance >= Math.random();
+  const command = isSuccessful ? action.success : action.failure;
 
-  // Update location
-  if (command.teleport) {
-    location = locations[command.teleport];
-  }
+  return {
+    actionFeedback: command.text,
+    location: teleport(location, command.teleport),
+    clock: incrementClock(clock, location.freezeTime, command.timeUse),
+    feedbackRepeats: updateRepeats(
+      actionFeedback,
+      command.text,
+      feedbackRepeats,
+    ),
+  };
+}
 
-  // Update clock
-  if (!location.freezeTime && command.timeUse) {
-    clock += command.timeUse;
-  }
-  console.log(`gameState clock: ${gameState.clock}`);
+function incrementClock(clock, timeFrozen, timeUse) {
+  if (timeFrozen || !timeUse) return clock;
+  return clock + timeUse;
+}
 
-  // Update feedback repeats
-  const newFeedback = command.text;
-  if (newFeedback === actionFeedback) {
-    feedbackRepeats++;
-  } else {
-    feedbackRepeats = 0;
-  }
+function teleport(oldLocation, newLocation) {
+  if (!newLocation) return oldLocation;
+  return locations[newLocation];
+}
 
-  return { actionFeedback: newFeedback, location, clock, feedbackRepeats };
+function updateRepeats(oldFeedback, newFeedback, repeats) {
+  if (oldFeedback !== newFeedback) return 0;
+  return repeats + 1;
 }
