@@ -13,7 +13,6 @@ export default function GameOutput() {
       <StatusText
         actionFeedback={actionFeedback}
         locationDescription={location.description}
-        repeats={gameState.feedbackRepeats}
       />
       <ActionButtonList interactables={location.interactables} />
     </div>

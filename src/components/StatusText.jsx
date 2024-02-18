@@ -1,10 +1,6 @@
 import string from "@/helpers/string";
 
-export default function StatusText({
-  actionFeedback,
-  locationDescription,
-  repeats,
-}) {
+export default function StatusText({ actionFeedback, locationDescription }) {
   return (
     <>
       <div
@@ -13,15 +9,9 @@ export default function StatusText({
         className="focus-visible:outline-none"
       ></div>
       <p role="status" className="mb-4 text-lg">
-        {appendRepeats(actionFeedback, repeats)}
+        {actionFeedback}
       </p>
       <p className="mb-4 text-lg">{locationDescription}</p>
     </>
   );
-}
-
-function appendRepeats(actionFeedback, repeats) {
-  if (!repeats) return actionFeedback;
-  const times = `time${repeats > 1 ? "s" : ""}`;
-  return `${actionFeedback} (Repeated ${repeats} ${times})`;
 }

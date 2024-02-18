@@ -23,5 +23,16 @@ export default function postProcessGameState(gameState, doAction) {
     gameState.player,
   );
 
-  return parsedGameState;
+  const actionFeedback = appendRepeats(
+    gameState.actionFeedback,
+    gameState.feedbackRepeats,
+  );
+
+  return { ...parsedGameState, actionFeedback };
+}
+
+function appendRepeats(actionFeedback, repeats) {
+  if (!repeats) return actionFeedback;
+  const times = `time${repeats > 1 ? "s" : ""}`;
+  return `${actionFeedback} (Repeated ${repeats} ${times})`;
 }
