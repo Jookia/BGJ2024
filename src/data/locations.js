@@ -30,17 +30,6 @@ export const locations = {
       },
     },
   },
-  lost: {
-    description: "You're lost, probably due to a developer oversight.",
-    interactables: {
-      return: {
-        text: "Go back to your base",
-        successChance: 1,
-        successText: "",
-        successTeleport: "base",
-      },
-    },
-  },
   supermart_outside: {
     description: "You are outside a supermarket. It is garbage.",
     interactables: {
