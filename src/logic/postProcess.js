@@ -19,20 +19,19 @@ export default function postProcessGameState(gameState, doAction) {
   };
 
   const parsedGameState = parseObject(
-    { ...gameState, location },
-    gameState.player,
+    {
+      ...gameState,
+      location,
+      actionFeedback: `${gameState.actionFeedback}\${repeats}`,
+    },
+    { ...gameState.player, repeats: repeatText(gameState.feedbackRepeats) },
   );
 
-  const actionFeedback = appendRepeats(
-    gameState.actionFeedback,
-    gameState.feedbackRepeats,
-  );
-
-  return { ...parsedGameState, actionFeedback };
+  return parsedGameState;
 }
 
-function appendRepeats(actionFeedback, repeats) {
-  if (!repeats) return actionFeedback;
+function repeatText(repeats) {
+  if (!repeats) return "";
   const times = `time${repeats > 1 ? "s" : ""}`;
-  return `${actionFeedback} (Repeated ${repeats} ${times})`;
+  return ` (Repeated ${repeats} ${times})`;
 }
