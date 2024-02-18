@@ -7,7 +7,7 @@ export const locations = {
       base: {
         text: "Yes, take me to my base!",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "You arrive at your base. It's nothing incredible, but it will have to do for now.",
           teleport: "base",
         },
@@ -15,7 +15,7 @@ export const locations = {
       coward: {
         text: "No, I'm a little scared...",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "That's okay, we all can be sometimes. Take a deep breather, relax and start back at the beginning.",
           teleport: "",
         },
@@ -29,7 +29,7 @@ export const locations = {
       return: {
         text: "Go to the supermart",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "",
           teleport: "supermart_outside",
         },
@@ -42,7 +42,7 @@ export const locations = {
       choice1: {
         text: "Go inside the Supermart",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "",
           teleport: "supermart_inside",
           timeUse: 60,
@@ -51,12 +51,12 @@ export const locations = {
       nothing: {
         text: "Do nothing",
         successChance: 0.5,
-        onSuccess: {
+        success: {
           text: "You do nothing succesfully.",
           teleport: "",
           timeUse: 30,
         },
-        onFailure: {
+        failure: {
           text: "You try to do nothing but fail!",
           teleport: "",
           timeUse: 100,
@@ -65,7 +65,7 @@ export const locations = {
       return: {
         text: "Return to base",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "",
           teleport: "base",
         },
@@ -78,7 +78,7 @@ export const locations = {
       outside: {
         text: "Go outside",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "You exit the supermart",
           teleport: "supermart_outside",
           timeUse: 60,
@@ -87,7 +87,7 @@ export const locations = {
       nothing: {
         text: "Do nothing again",
         successChance: 1,
-        onSuccess: {
+        success: {
           text: "You do nothing again. Succesfully.",
           teleport: "",
           timeUse: 30,

@@ -6,9 +6,9 @@ export default function gameTick(action, gameState) {
   // Select commands to use
   let command = {};
   if (action.successChance < Math.random()) {
-    command = action.onFailure;
+    command = action.failure;
   } else {
-    command = action.onSuccess;
+    command = action.success;
   }
 
   // Update location
