@@ -30,7 +30,7 @@ export const locations = {
         text: "Go to the supermart",
         successChance: 1,
         success: {
-          text: "",
+          text: "You rush to the supermart.",
           teleport: "supermart_outside",
         },
       },
@@ -43,7 +43,7 @@ export const locations = {
         text: "Go inside the Supermart",
         successChance: 1,
         success: {
-          text: "",
+          text: "You sneak past a security officer in to the Supermart.",
           teleport: "supermart_inside",
           timeUse: 60,
         },
@@ -66,7 +66,7 @@ export const locations = {
         text: "Return to base",
         successChance: 1,
         success: {
-          text: "",
+          text: "You bail and head back to your base.",
           teleport: "base",
         },
       },

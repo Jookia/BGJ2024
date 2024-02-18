@@ -13,15 +13,15 @@ export default function StatusText({
         className="focus-visible:outline-none"
       ></div>
       <p role="status" className="mb-4 text-lg">
-        {string(appendRepeats(actionFeedback, repeats)) ?? locationDescription}
+        {appendRepeats(actionFeedback, repeats)}
       </p>
-      {actionFeedback && <p className="mb-4 text-lg">{locationDescription}</p>}
+      <p className="mb-4 text-lg">{locationDescription}</p>
     </>
   );
 }
 
 function appendRepeats(actionFeedback, repeats) {
-  if (!actionFeedback || !repeats) return actionFeedback;
+  if (!repeats) return actionFeedback;
   const times = `time${repeats > 1 ? "s" : ""}`;
   return `${actionFeedback} (Repeated ${repeats} ${times})`;
 }
