@@ -2,6 +2,7 @@ export const locations = {
   intro: {
     description:
       "Hello ${name}, welcome to BGJ2024! This game is about heisting resources to aid your local community and escape poverty. You will face many challenges and commit many crimes. When you're ready, head to your base and start your mischief. Are you ready?",
+    freezeTime: true,
     interactables: {
       base: {
         text: "Yes, take me to my base!",
@@ -21,12 +22,14 @@ export const locations = {
   },
   base: {
     description: "Your base is built around an abandoned warehouse.",
+    freezeTime: true,
     interactables: {
       return: {
         text: "Go to the supermart",
         successChance: 1,
         successText: "",
         successTeleport: "supermart_outside",
+        successClock: "=600",
       },
     },
   },
@@ -38,12 +41,14 @@ export const locations = {
         successChance: 1,
         successText: "",
         successTeleport: "supermart_inside",
+        successClock: "-60",
       },
       nothing: {
         text: "Do nothing",
         successChance: 1,
         successText: "You do nothing again. Succesfully.",
         successTeleport: "",
+        successClock: "-30",
       },
       nothing: {
         text: "Return to base",
@@ -62,12 +67,14 @@ export const locations = {
         successText: "",
         successText: "You exit the supermart",
         successTeleport: "supermart_outside",
+        successClock: "-60",
       },
       nothing: {
         text: "Do nothing again",
         successChance: 1,
         successText: "You do nothing again. Succesfully.",
         successTeleport: "",
+        successClock: "-30",
       },
     },
   },

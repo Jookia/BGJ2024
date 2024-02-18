@@ -23,5 +23,14 @@ export default function postProcessGameState(gameState, doAction) {
     gameState.player,
   );
 
-  return parsedGameState;
+  if (!gameState.location.freezeTime) {
+    const clockFeedback = `${gameState.actionFeedback} You have ${gameState.clock} second(s) left.`;
+    const clockGameState = {
+      ...parsedGameState,
+      actionFeedback: clockFeedback,
+    };
+    return clockGameState;
+  } else {
+    return parsedGameState;
+  }
 }

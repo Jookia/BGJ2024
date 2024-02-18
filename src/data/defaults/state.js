@@ -6,4 +6,5 @@ export const defaultState = {
   location: locations["intro"],
   inventory: [],
   actionFeedback: "",
+  clock: 0,
 };

@@ -1,7 +1,7 @@
 import { locations } from "@/data/locations";
 
 export default function gameTick(action, gameState) {
-  let { location, actionFeedback } = gameState;
+  let { location, actionFeedback, clock } = gameState;
 
   let feedback = "";
 
@@ -16,6 +16,9 @@ export default function gameTick(action, gameState) {
         description: successTeleport.description,
       };
     }
+    if (!location.freezeTime) {
+      clock = updateClock(clock, action.successClock);
+    }
   }
 
   // TODO remove this
@@ -23,5 +26,25 @@ export default function gameTick(action, gameState) {
     feedback += " (Repeat)";
   }
 
-  return { actionFeedback: feedback, location };
+  return { actionFeedback: feedback, location, clock };
+}
+
+function updateClock(currentValue, clockAction) {
+  if (!clockAction) {
+    return currentValue;
+  }
+
+  const command = clockAction[0];
+  const value = Number(clockAction.slice(1));
+
+  switch (command) {
+    case "=":
+      return value;
+    case "+":
+      return currentValue + value;
+    case "-":
+      return currentValue - value;
+  }
+
+  throw new Error(`Unknown clock action: ${clockAction}`);
 }
