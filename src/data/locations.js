@@ -17,7 +17,6 @@ export const locations = {
         successChance: 1,
         success: {
           text: "That's okay, we all can be sometimes. Take a deep breather, relax and start back at the beginning.",
-          teleport: "",
         },
       },
     },
@@ -53,12 +52,10 @@ export const locations = {
         successChance: 0.5,
         success: {
           text: "You do nothing succesfully.",
-          teleport: "",
           timeUse: 30,
         },
         failure: {
           text: "You try to do nothing but fail!",
-          teleport: "",
           timeUse: 100,
         },
       },
@@ -89,7 +86,6 @@ export const locations = {
         successChance: 1,
         success: {
           text: "You do nothing again. Succesfully.",
-          teleport: "",
           timeUse: 30,
         },
       },

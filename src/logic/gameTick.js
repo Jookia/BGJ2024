@@ -13,7 +13,7 @@ export default function gameTick(action, gameState) {
 
   // Update location
   let newLocation = location;
-  if (command.teleport != "") {
+  if (command.teleport) {
     newLocation = locations[command.teleport];
   }
   location = {
