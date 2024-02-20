@@ -6,7 +6,7 @@ import useGameState from "@/hooks/useGameState";
 
 export default function GameOutput() {
   const gameState = useGameState();
-  const { actionFeedback, location } = gameState;
+  const { actionFeedback, interactables, location } = gameState;
 
   return (
     <div id="game-output" className="p-8 flex flex-col items-center">
@@ -14,7 +14,7 @@ export default function GameOutput() {
         actionFeedback={actionFeedback}
         locationDescription={location.description}
       />
-      <ActionButtonList interactables={location.interactables} />
+      <ActionButtonList interactables={interactables} />
     </div>
   );
 }

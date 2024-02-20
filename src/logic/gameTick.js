@@ -1,10 +1,23 @@
 import { locations } from "@/data/locations";
 
 export default function gameTick(action, gameState) {
-  let { location, actionFeedback, clock, feedbackRepeats } = gameState;
+  let {
+    location,
+    actionFeedback,
+    clock,
+    feedbackRepeats,
+    inventory,
+    interactables,
+  } = gameState;
 
   const isSuccessful = action.successChance >= Math.random();
   const command = isSuccessful ? action.success : action.failure;
+  const newLocation = teleport(location, command.teleport);
+
+  let newInteractables = newLocation.interactables;
+  gameState.inventory.forEach((item) => {
+    newInteractables = Object.assign(newInteractables, item.interactables);
+  });
 
   return {
     actionFeedback: command.text,
@@ -15,6 +28,8 @@ export default function gameTick(action, gameState) {
       command.text,
       feedbackRepeats,
     ),
+    inventory,
+    interactables: newInteractables,
   };
 }
 
