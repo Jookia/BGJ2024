@@ -9,7 +9,7 @@ export default function gameTick(action, gameState) {
   return {
     actionFeedback: command.text,
     location: teleport(location, command.teleport),
-    clock: incrementClock(clock, location.freezeTime, command.timeUse),
+    clock: incrementClock(clock, command.freezeTime, command.timeUse),
     feedbackRepeats: updateRepeats(
       actionFeedback,
       command.text,
