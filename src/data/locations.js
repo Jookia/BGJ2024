@@ -2,42 +2,36 @@ export const locations = {
   intro: {
     description:
       "Hello ${name}, welcome to BGJ2024! This game is about heisting resources to aid your local community and escape poverty. You will face many challenges and commit many crimes. When you're ready, head to your base and start your mischief. Are you ready?",
+    freezeTime: true,
     interactables: {
       base: {
         text: "Yes, take me to my base!",
         successChance: 1,
-        successText:
-          "You arrive at your base. It's nothing incredible, but it will have to do for now.",
-        successTeleport: "base",
+        success: {
+          text: "You arrive at your base. It's nothing incredible, but it will have to do for now.",
+          teleport: "base",
+        },
       },
       coward: {
         text: "No, I'm a little scared...",
         successChance: 1,
-        successText:
-          "That's okay, we all can be sometimes. Take a deep breather, relax and start back at the beginning.",
-        successTeleport: "",
+        success: {
+          text: "That's okay, we all can be sometimes. Take a deep breather, relax and start back at the beginning.",
+        },
       },
     },
   },
   base: {
     description: "Your base is built around an abandoned warehouse.",
+    freezeTime: true,
     interactables: {
       return: {
         text: "Go to the supermart",
         successChance: 1,
-        successText: "",
-        successTeleport: "supermart_outside",
-      },
-    },
-  },
-  lost: {
-    description: "You're lost, probably due to a developer oversight.",
-    interactables: {
-      return: {
-        text: "Go back to your base",
-        successChance: 1,
-        successText: "",
-        successTeleport: "base",
+        success: {
+          text: "You rush to the supermart.",
+          teleport: "supermart_outside",
+        },
       },
     },
   },
@@ -47,20 +41,31 @@ export const locations = {
       choice1: {
         text: "Go inside the Supermart",
         successChance: 1,
-        successText: "",
-        successTeleport: "supermart_inside",
+        success: {
+          text: "You sneak past a security officer in to the Supermart.",
+          teleport: "supermart_inside",
+          timeUse: 60,
+        },
       },
       nothing: {
         text: "Do nothing",
-        successChance: 1,
-        successText: "You do nothing again. Succesfully.",
-        successTeleport: "",
+        successChance: 0.5,
+        success: {
+          text: "You do nothing succesfully.",
+          timeUse: 30,
+        },
+        failure: {
+          text: "You try to do nothing but fail!",
+          timeUse: 100,
+        },
       },
-      nothing: {
+      return: {
         text: "Return to base",
         successChance: 1,
-        successText: "",
-        successTeleport: "base",
+        success: {
+          text: "You bail and head back to your base.",
+          teleport: "base",
+        },
       },
     },
   },
@@ -70,15 +75,19 @@ export const locations = {
       outside: {
         text: "Go outside",
         successChance: 1,
-        successText: "",
-        successText: "You exit the supermart",
-        successTeleport: "supermart_outside",
+        success: {
+          text: "You exit the supermart",
+          teleport: "supermart_outside",
+          timeUse: 60,
+        },
       },
       nothing: {
         text: "Do nothing again",
         successChance: 1,
-        successText: "You do nothing again. Succesfully.",
-        successTeleport: "",
+        success: {
+          text: "You do nothing again. Succesfully.",
+          timeUse: 30,
+        },
       },
     },
   },

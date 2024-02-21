@@ -9,9 +9,9 @@ export default function StatusText({ actionFeedback, locationDescription }) {
         className="focus-visible:outline-none"
       ></div>
       <p role="status" className="mb-4 text-lg">
-        {string(actionFeedback) ?? locationDescription}
+        {actionFeedback}
       </p>
-      {actionFeedback && <p className="mb-4 text-lg">{locationDescription}</p>}
+      <p className="mb-4 text-lg">{locationDescription}</p>
     </>
   );
 }

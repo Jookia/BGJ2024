@@ -6,4 +6,6 @@ export const defaultState = {
   location: locations["intro"],
   inventory: [],
   actionFeedback: "",
+  clock: 0,
+  feedbackRepeats: 0,
 };

@@ -19,9 +19,19 @@ export default function postProcessGameState(gameState, doAction) {
   };
 
   const parsedGameState = parseObject(
-    { ...gameState, location },
-    gameState.player,
+    {
+      ...gameState,
+      location,
+      actionFeedback: `${gameState.actionFeedback}\${repeats}`,
+    },
+    { ...gameState.player, repeats: repeatText(gameState.feedbackRepeats) },
   );
 
   return parsedGameState;
+}
+
+function repeatText(repeats) {
+  if (!repeats) return "";
+  const times = `time${repeats > 1 ? "s" : ""}`;
+  return ` (Repeated ${repeats} ${times})`;
 }
