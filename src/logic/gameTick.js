@@ -16,7 +16,7 @@ export default function gameTick(action, gameState) {
 
   let newInteractables = newLocation.interactables;
   gameState.inventory.forEach((item) => {
-    newInteractables = Object.assign(newInteractables, item.interactables);
+    newInteractables = newInteractables.concat(item.interactables);
   });
 
   return {

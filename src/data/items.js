@@ -1,13 +1,13 @@
 export const items = {
   watch: {
-    interactables: {
-      check: {
+    interactables: [
+      {
         text: "Check your watch",
         successChance: 1,
         success: {
           text: "Your watch is broken.",
         },
       },
-    },
+    ],
   },
 };

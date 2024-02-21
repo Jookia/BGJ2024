@@ -9,7 +9,7 @@ export const defaultState = {
   actionFeedback: "",
   clock: 0,
   feedbackRepeats: 0,
-  interactables: Object.assign(
+  interactables: [].concat(
     locations["intro"].interactables,
     items["watch"].interactables,
   ),
